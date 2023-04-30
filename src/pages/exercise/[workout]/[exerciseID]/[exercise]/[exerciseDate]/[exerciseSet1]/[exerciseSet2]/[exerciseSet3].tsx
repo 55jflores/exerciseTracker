@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { ChangeEvent, FormEvent, useState } from "react";
+import LoadingComponent from "@/pages/loading";
 
 function ExercisePage() {
   const router = useRouter();
@@ -12,7 +13,8 @@ function ExercisePage() {
   const [exerciseChangeSet2, setexerciseChangeSet2] = useState<string | undefined>(exerciseSet2?.toString());
   const [exerciseChangeSet3, setexerciseChangeSet3] = useState<string | undefined>(exerciseSet3?.toString());
 
-  const [btn, setBtn] = useState('Go Back');
+  const [isLoading, setIsLoading] = useState(false)
+
   const handleExerciseChange = (event: ChangeEvent<HTMLInputElement>) => {
     setexerciseChange(event.target.value)
   }
@@ -48,6 +50,7 @@ function ExercisePage() {
 
     console.log('Data ',data)
 
+    setIsLoading(true)
     const response = await fetch('/api/updateTable', {
         body: JSON.stringify(data),
         headers: {
@@ -55,18 +58,19 @@ function ExercisePage() {
           },
         method: 'POST'
       })
+    setIsLoading(false)
 
-    setBtn('View Update')
+    router.push(`/${workout}`)
   
   }
 
 
   return (
     <div>
-    
       <form onSubmit={handleSubmit} className="bg-gray-300 dark:bg-gray-700 p-6 rounded-lg shadow-lg mt- flex flex-col items-center">
 
           <div key={exerciseID?.toString()} className="flex flex-col items-center my-4">
+            <h1 className="text-gray-800 dark:text-white text-3xl font-bold">Edit exercise data</h1>
             
             <label className='text-gray-800 dark:text-white' htmlFor="exercise">Exercise</label>
             <input type="text" id="exercise" name="exercise" value={exerciseChange} onChange={handleExerciseChange} />
@@ -87,17 +91,15 @@ function ExercisePage() {
           </div>
         
           <div className="flex justify-between mb-5">
-
             <div className="flex flex-col items-center mr-5">
               <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 mt-2">Submit</button>
             </div>
-            
-            <div className="flex flex-col items-center ml-5">
-              <Link href={`/${workout as string}`}><button className="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 mt-2">{btn}</button></Link>
+            <div className="flex flex-col items-center mr-5">
+              <Link href={`/${workout}`}><button type="button" className="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 mt-2">Go Back</button></Link>
             </div>
           </div>
       </form>
-
+      {isLoading === true && <LoadingComponent message="Updating Database..."/>}
     </div>
   
   );
