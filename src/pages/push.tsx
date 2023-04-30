@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import ExerciseComponent from './components/exerciseComponent';
-import { Exercise } from './types/exercises.types';
+import { Exercise } from '../types/exercises.types';
 
 const Push = () => {
 

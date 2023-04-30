@@ -1,5 +1,5 @@
 import React from "react"
-import { Exercise } from "../types/exercises.types"
+import { Exercise } from "../../types/exercises.types"
 import Link from "next/link"
 
 interface ExercisesProps {
