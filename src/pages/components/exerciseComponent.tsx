@@ -12,7 +12,7 @@ const ExerciseComponent = ({exercises, workout}: ExercisesProps) => {
 return (
     <div>
 
-    {exercises.map((exercise) => (
+    {exercises && exercises.map((exercise) => (
         <Link key={exercise.id} href='/exercise/[workout]/[exerciseID]/[exercise]/[exerciseDate]/[exerciseSet1]/[exerciseSet2]/[exerciseSet3]' as={`/exercise/${workout}/${exercise.id}/${exercise.exercise}/${exercise.date}/${exercise.set1}/${exercise.set2}/${exercise.set3}`}>
             <div key={exercise.id} className="flex flex-col items-center my-4">
                 <h2 className="text-center text-green-500 text-xl font-bold">{exercise.exercise}: {exercise.date}</h2>
