@@ -48,8 +48,6 @@ function ExercisePage() {
       set3: form.set3.value as string,
     }
 
-    console.log('Data ',data)
-
     setIsLoading(true)
     const response = await fetch('/api/updateTable', {
         body: JSON.stringify(data),
@@ -79,13 +77,13 @@ function ExercisePage() {
             <input type="text" id="date" name="date" value={exerciseChangeDate} onChange={handleExerciseChangeDate} />
 
             <label className='text-gray-800 dark:text-white' htmlFor="set1">Set 1</label>
-            <input type="text" id="set1" name="set1" value={exerciseChangeSet1} onChange={handleExerciseChangeSet1} />
+            <input type="number" id="set1" name="set1" value={exerciseChangeSet1} onChange={handleExerciseChangeSet1} />
 
             <label className='text-gray-800 dark:text-white' htmlFor="set2">Set 2</label>
-            <input type="text" id="set2" name="set2" value={exerciseChangeSet2} onChange={handleExerciseChangeSet2} />
+            <input type="number" id="set2" name="set2" value={exerciseChangeSet2} onChange={handleExerciseChangeSet2} />
             
             <label className='text-gray-800 dark:text-white' htmlFor="set3">Set 3</label>
-            <input type="text" id="set3" name="set3" value={exerciseChangeSet3} onChange={handleExerciseChangeSet3} />
+            <input type="number" id="set3" name="set3" value={exerciseChangeSet3} onChange={handleExerciseChangeSet3} />
 
           
           </div>

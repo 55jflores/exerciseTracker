@@ -2,15 +2,15 @@ import React, { useEffect, useState } from 'react';
 import ExerciseComponent from './components/exerciseComponent';
 import { Exercise } from '../types/exercises.types';
 import LoadingComponent from './loading';
-
+import supabaseClient from './api/supabaseclient';
 const Legs = () => {
 
   const [legExercises,setLegExercises] = useState<Exercise[]>([])
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
+
     const fetchPosts = async () => {
-      
         const data = {
             workout: "legs"
         }
