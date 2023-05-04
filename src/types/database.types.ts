@@ -12,24 +12,24 @@ export interface Database {
       legs: {
         Row: {
           date: string | null
-          exercise: string
-          id: number
+          exercise: string | null
+          id: string
           set1: string | null
           set2: string | null
           set3: string | null
         }
         Insert: {
           date?: string | null
-          exercise: string
-          id?: number
+          exercise?: string | null
+          id?: string
           set1?: string | null
           set2?: string | null
           set3?: string | null
         }
         Update: {
           date?: string | null
-          exercise?: string
-          id?: number
+          exercise?: string | null
+          id?: string
           set1?: string | null
           set2?: string | null
           set3?: string | null
@@ -39,7 +39,7 @@ export interface Database {
         Row: {
           date: string | null
           exercise: string | null
-          id: number
+          id: string
           set1: string | null
           set2: string | null
           set3: string | null
@@ -47,7 +47,7 @@ export interface Database {
         Insert: {
           date?: string | null
           exercise?: string | null
-          id?: number
+          id?: string
           set1?: string | null
           set2?: string | null
           set3?: string | null
@@ -55,7 +55,7 @@ export interface Database {
         Update: {
           date?: string | null
           exercise?: string | null
-          id?: number
+          id?: string
           set1?: string | null
           set2?: string | null
           set3?: string | null
@@ -65,7 +65,7 @@ export interface Database {
         Row: {
           date: string | null
           exercise: string | null
-          id: number
+          id: string
           set1: string | null
           set2: string | null
           set3: string | null
@@ -73,7 +73,7 @@ export interface Database {
         Insert: {
           date?: string | null
           exercise?: string | null
-          id?: number
+          id?: string
           set1?: string | null
           set2?: string | null
           set3?: string | null
@@ -81,7 +81,7 @@ export interface Database {
         Update: {
           date?: string | null
           exercise?: string | null
-          id?: number
+          id?: string
           set1?: string | null
           set2?: string | null
           set3?: string | null

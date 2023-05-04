@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { ChangeEvent, FormEvent, useState } from "react";
-import LoadingComponent from "@/pages/loading";
+import LoadingComponent from "@/pages/components/loading";
 
 function ExercisePage() {
   const router = useRouter();
@@ -37,12 +37,13 @@ function ExercisePage() {
     const form = event.target as HTMLFormElement
 
     const tableName = workout
+    let currentDate = new Date();
 
     const data = {
       tableName: tableName as string,
       id: exerciseID as string,
       exercise: form.exercise.value as string,
-      date: form.date.value as string,
+      date: currentDate.toDateString() as string,
       set1: form.set1.value as string,
       set2: form.set2.value as string,
       set3: form.set3.value as string,
@@ -70,21 +71,25 @@ function ExercisePage() {
           <div key={exerciseID?.toString()} className="flex flex-col items-center my-4">
             <h1 className="text-gray-800 dark:text-white text-3xl font-bold">Edit exercise data</h1>
             
-            <label className='text-gray-800 dark:text-white' htmlFor="exercise">Exercise</label>
-            <input type="text" id="exercise" name="exercise" value={exerciseChange} onChange={handleExerciseChange} />
-            
-            <label className='text-gray-800 dark:text-white' htmlFor="date">Date</label>
-            <input type="text" id="date" name="date" value={exerciseChangeDate} onChange={handleExerciseChangeDate} />
+            <div className="flex flex-col w-full items-center my-2">
+              <label className="text-gray-800 dark:text-white text-sm font-semibold mb-1" htmlFor="exercise">Exercise</label>
+              <input className="bg-white dark:bg-gray-600 w-full rounded-lg border-2 border-gray-300 dark:border-gray-600 px-4 py-2 focus:outline-none focus:border-blue-500 text-gray-700 dark:text-white" type="text" id="exercise" name="exercise" value={exerciseChange} onChange={handleExerciseChange} />
+            </div>
 
-            <label className='text-gray-800 dark:text-white' htmlFor="set1">Set 1</label>
-            <input type="number" id="set1" name="set1" value={exerciseChangeSet1} onChange={handleExerciseChangeSet1} />
+            <div className="flex flex-col w-full items-center my-2">
+              <label className="text-gray-800 dark:text-white text-sm font-semibold mb-1" htmlFor="set1">Set 1</label>
+              <input className="bg-white dark:bg-gray-600 w-full rounded-lg border-2 border-gray-300 dark:border-gray-600 px-4 py-2 focus:outline-none focus:border-blue-500 text-gray-700 dark:text-white" type="number" id="set1" name="set1" value={exerciseChangeSet1} onChange={handleExerciseChangeSet1} />
+            </div>
 
-            <label className='text-gray-800 dark:text-white' htmlFor="set2">Set 2</label>
-            <input type="number" id="set2" name="set2" value={exerciseChangeSet2} onChange={handleExerciseChangeSet2} />
-            
-            <label className='text-gray-800 dark:text-white' htmlFor="set3">Set 3</label>
-            <input type="number" id="set3" name="set3" value={exerciseChangeSet3} onChange={handleExerciseChangeSet3} />
-
+            <div className="flex flex-col w-full items-center my-2">
+              <label className="text-gray-800 dark:text-white text-sm font-semibold mb-1" htmlFor="set2">Set 2</label>
+              <input className="bg-white dark:bg-gray-600 w-full rounded-lg border-2 border-gray-300 dark:border-gray-600 px-4 py-2 focus:outline-none focus:border-blue-500 text-gray-700 dark:text-white" type="number" id="set2" name="set2" value={exerciseChangeSet2} onChange={handleExerciseChangeSet2} />
+            </div>
+    
+            <div className="flex flex-col w-full items-center my-2">
+              <label className="text-gray-800 dark:text-white text-sm font-semibold mb-1" htmlFor="set3">Set 3</label>
+              <input className="bg-white dark:bg-gray-600 w-full rounded-lg border-2 border-gray-300 dark:border-gray-600 px-4 py-2 focus:outline-none focus:border-blue-500 text-gray-700 dark:text-white" type="number" id="set3" name="set3" value={exerciseChangeSet3} onChange={handleExerciseChangeSet3} />
+            </div>
           
           </div>
         
