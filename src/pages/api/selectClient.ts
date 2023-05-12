@@ -2,8 +2,6 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import { createClient } from '@supabase/supabase-js'
 import {Database} from '../../types/database.types'
 import supabaseClient from './supabaseclient';
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
 const tadah = process.env.NEXT_PUBLIC_TADAH as string;
 //export const supabaseClient = createClient<Database>(supabaseUrl as string, supabaseAnonKey as string)
