@@ -14,12 +14,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
   const myIn = body.tadeh as string
   console.log('In here')
   console.log('My in is ',myIn)
+  console.log('Body is ',body)
   if (tadeh == myIn){
+    console.log('In iff')
     // Update row in table  
     const { data, error } = await supabaseClient.from(body.tableName)
                       .update({exercise: body.exercise, date: body.date, set1: body.set1, set2: body.set2, set3: body.set3})
                       .eq('id',body.id)
-                      .select()
 
     // Redirect to page: Works with GET only
     //res.redirect(`/${body.tableName}`)
