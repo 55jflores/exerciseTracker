@@ -12,7 +12,8 @@ type ResponseData = {
 export default async function handler(req: NextApiRequest, res: NextApiResponse<ResponseData>) {
   const body = req.body
   const myIn = body.tadeh as string
-
+  console.log('In here')
+  console.log('My in is ',myIn)
   if (tadeh == myIn){
     // Update row in table  
     const { data, error } = await supabaseClient.from(body.tableName)
